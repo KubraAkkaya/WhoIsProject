@@ -11,7 +11,28 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  <style>
+    .result {
+      text-align: center;
+    }
 
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: 0 auto; /* Tabloyu ortala */
+      margin-top: 20px; /* İstenilen boşluk */
+    }
+
+    th, td {
+      border: 1px solid #ddd; /* Kenarlıklar ekle */
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 
 <body>
@@ -41,8 +62,16 @@
 
 <br>
 <br>
-<div class="" style="text-align: center"> IP: {{.ip}} <br>
-  <pre>{{.resp}}</pre>
+<div class="result" style="text-align: center">  <br>
+  <table>
+    <tr>
+      <th>IP is: {{.ip}} And Results </th>
+    </tr>
+    <tr>
+      <td><pre>{{.resp}}</pre></td>
+    </tr>
+  </table>
+
 </div>
 
 <!-- Result -->

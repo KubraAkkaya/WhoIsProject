@@ -11,7 +11,26 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-
+    <style>
+        table {
+            margin: auto;
+            width: 80%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .scroll-container {
+            max-height: 300px; /* Maksimum yükseklik */
+            overflow: auto; /* Scroll özelliği */
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,9 +57,15 @@
 </div>
 <br>
 <div class="" style="text-align: center">
-    <p>DNS Lookup Results for <b>{{.ip}}</b></p>
-    <pre>{{.results}}</pre>
+    <h2>DNS Lookup Results for <b>{{.domain}}</b></h2>
+    <table>
+        <h2>Results</h2>
+        <div class="scroll-container">
+            <pre>{{.results}}</pre>
+        </div>
+    </table>
 </div>
+
 
     <script>
         function sendFormData() {
