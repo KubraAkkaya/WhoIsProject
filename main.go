@@ -54,19 +54,24 @@ func main() {
 	http.HandleFunc("/whoIs", WhoisHandler)
 	http.HandleFunc("/whoisSelect", WhoisStaff)
 
+	httpPort := getPort("HTTP_PORT", "80")
+	go func() {
+		log.Fatal(http.ListenAndServe(httpPort, http.HandlerFunc(redirectToHTTPS)))
+	}()
+
 	httpsPort := getPort("HTTPS_PORT", "443")
 	certFile := "cert.pem"
 	keyFile := "key.pem"
 	go func() {
 		log.Fatal(http.ListenAndServeTLS(httpsPort, certFile, keyFile, nil))
 	}()
-	httpPort := getPort("HTTP_PORT", "80")
-	go func() {
-		log.Fatal(http.ListenAndServe(httpPort, nil))
-	}()
 
+	log.Println("Running WEB!")
 	select {}
+}
 
+func redirectToHTTPS(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "https://"+r.Host+r.RequestURI, http.StatusMovedPermanently)
 }
 
 const (

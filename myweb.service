@@ -1,0 +1,13 @@
+[Unit]
+Description=My Go Web Server
+After=network.target
+
+[Service]
+ExecStart=/root
+WorkingDirectory=/root/GolandProjects
+User=root
+Group=root
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
